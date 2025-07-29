@@ -2,6 +2,7 @@ package com.challengeForoHub.demo.controller;
 
 import com.challengeForoHub.demo.domain.usuario.DatosAutenticacion;
 import com.challengeForoHub.demo.domain.usuario.Usuario;
+import com.challengeForoHub.demo.infra.security.DatosTokenJWT;
 import com.challengeForoHub.demo.infra.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,11 @@ public class AutenticacionController {
 
     @PostMapping
     public ResponseEntity iniciarSesion(@RequestBody @Valid DatosAutenticacion datos){
-        var token = new UsernamePasswordAuthenticationToken(datos.login(), datos.contrasena());
-        var autenticacion = manager.authenticate(token);
+        var authenticationToken = new UsernamePasswordAuthenticationToken(datos.login(), datos.contrasena());
+        var autenticacion = manager.authenticate(authenticationToken);
 
-//        return ResponseEntity.ok("123456");
-        return  ResponseEntity.ok(tokenService.generarToken((Usuario) autenticacion.getPrincipal()));
+        var tokenJWT = tokenService.generarToken((Usuario) autenticacion.getPrincipal());
+
+        return  ResponseEntity.ok(new DatosTokenJWT(tokenJWT));
     }
 }

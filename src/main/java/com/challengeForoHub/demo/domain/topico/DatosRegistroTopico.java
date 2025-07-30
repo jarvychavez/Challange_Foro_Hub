@@ -1,7 +1,7 @@
 package com.challengeForoHub.demo.domain.topico;
 
 public record DatosRegistroTopico(
-        String idAutor,
+        Long idUsuario,
         String mensaje,
         String nombreCurso,
         String titulo

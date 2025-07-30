@@ -19,19 +19,27 @@ public class Topico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String titulo;
+
     private String mensaje;
+
+    @Column(name = "nombre_curso")
     private String nombreCurso;
 
-    private Long idAutor;
+    @Column(name = "id_usuario")
+    private Long idUsuario;
+
+    @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
+
     private boolean status;
 
     public Topico(DatosRegistroTopico datos) {
         this.titulo = datos.titulo();
         this.mensaje = datos.mensaje();
         this.nombreCurso = datos.nombreCurso();
-        this.idAutor = Long.valueOf(datos.idAutor());
+        this.idUsuario = Long.valueOf(datos.idUsuario());
         this.fechaCreacion = LocalDateTime.now();
         this.status = true;
     }

@@ -43,4 +43,5 @@ public class Topico {
         this.fechaCreacion = LocalDateTime.now();
         this.status = true;
     }
+
 }

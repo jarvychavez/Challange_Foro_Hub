@@ -53,35 +53,49 @@ Construcción: Maven
 Dependencias útiles: Lombok, DevTools
 
 🏛️ Arquitectura del Proyecto
-
 src/main/java/com/challengeForoHub/demo
-│
-├── controller/                → Controladores REST
-│   ├── AutenticacionController
-│   └── TopicoController
-│
-├── domain/                    → Lógica de negocio
-│   ├── topico/
-│   │   ├── DatosRegistroTopico
-│   │   ├── DatosActualizacionTopico
-│   │   ├── Topico
-│   │   └── TopicoRepository
-│   │
-│   └── usuario/
-│       ├── AutenticacionService
-│       ├── DatosAutenticacionUsuario
-│       ├── Usuario
-│       └── UsuarioRepository
-│
-├── infra/                     → Configuración e infraestructura
-│   ├── exceptions/            → Manejo global de errores
-│   └── security/               → Configuración de seguridad y JWT
-│       ├── SecurityConfiguration
-│       ├── SecurityFilter
-│       └── TokenService
-│
-└── ForoApplication.java       → Clase principal
 
+controller → Controladores REST
+
+AutenticacionController
+
+TopicoController
+
+domain → Lógica de negocio
+
+topico
+
+DatosRegistroTopico
+
+DatosActualizacionTopico
+
+Topico
+
+TopicoRepository
+
+usuario
+
+AutenticacionService
+
+DatosAutenticacionUsuario
+
+Usuario
+
+UsuarioRepository
+
+infra → Configuración e infraestructura
+
+exceptions → Manejo global de errores
+
+security → Configuración de seguridad y JWT
+
+SecurityConfiguration
+
+SecurityFilter
+
+TokenService
+
+ForoApplication.java → Clase principal
 
 🔒 Seguridad
 JWT: Todas las solicitudes a endpoints protegidos requieren un token en el header Authorization: Bearer <token>.

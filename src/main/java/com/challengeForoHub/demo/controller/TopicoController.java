@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -22,8 +23,13 @@ public class TopicoController {
 
     @Transactional
     @PostMapping
-    public void registrar(@RequestBody @Valid DatosRegistroTopico datos){
-        repository.save(new Topico(datos));
+    public ResponseEntity registrar(@RequestBody @Valid DatosRegistroTopico datos, UriComponentsBuilder uriComponentsBuilder){
+        var topico = new Topico(datos);
+        repository.save(topico);
+
+        var uri = uriComponentsBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(topico);
     }
 
     @GetMapping
@@ -38,6 +44,12 @@ public class TopicoController {
         var topico = repository.getReferenceById(datos.id());
         topico.actualizarInformaciones(datos);
 
+    }
+
+    @Transactional
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id){
+        repository.deleteById(id);
     }
 
 

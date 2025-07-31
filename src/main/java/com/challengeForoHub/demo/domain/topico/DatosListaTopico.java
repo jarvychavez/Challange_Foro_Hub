@@ -3,18 +3,15 @@
 //
 //public record DatosListaTopico(
 //        Long id,
-//        Long idUsuario,
 //        String titulo,
-//        String mensaje,
-//        String nombreCurso
+//        String mensaje
 //
-//) {
+//
+//) {}
 //    public DatosListaTopico(Topico topico) {
 //        this(topico.getId(),
-//                topico.getIdUsuario(),
 //                topico.getTitulo(),
-//                topico.getMensaje(),
-//                topico.getNombreCurso()
+//                topico.getMensaje()
 //                );
 //    }
 //}

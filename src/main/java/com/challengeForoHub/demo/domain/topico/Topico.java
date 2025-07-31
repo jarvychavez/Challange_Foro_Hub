@@ -35,6 +35,7 @@ public class Topico {
 
     private boolean status;
 
+
     public Topico(DatosRegistroTopico datos) {
         this.titulo = datos.titulo();
         this.mensaje = datos.mensaje();
@@ -44,4 +45,15 @@ public class Topico {
         this.status = true;
     }
 
+    public void actualizarInformaciones(DatosActualizacionTopico datos) {
+        if (datos.titulo() != null) {
+            this.titulo = datos.titulo();
+        }
+        if (datos.mensaje() != null) {
+            this.mensaje = datos.mensaje();
+        }
+        if (datos.nombreCurso() != null) {
+            this.nombreCurso = datos.nombreCurso();
+        }
+    }
 }
